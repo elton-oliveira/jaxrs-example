@@ -12,7 +12,7 @@ public class QuotationResource {
 
 	private final static String COTACAO_DOLLAR = "2.2";
 	private final static String COTACAO_EURO = "3.1";
-	private final static String DEFAULT = "Moeda não suportada";
+	private final static String DEFAULT = "Unsupported currency";
 
 	/**
 	 * Simple example.
