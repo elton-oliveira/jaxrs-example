@@ -20,7 +20,7 @@ public class ProductResource {
 	@Path("/{ id }/xml")
 	@Produces(MediaType.APPLICATION_XML)
 	public ProductDTO getProductAsXML(@PathParam("id") int id) {
-		return new ProductDTO(id, "geradeira", 1499.99);
+		return new ProductDTO(id, "refrigerator", 1499.99);
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class ProductResource {
 	@Path("/{ id }/json")
 	@Produces(MediaType.APPLICATION_JSON)
 	public ProductDTO getProductAsJSON(@PathParam("id") int id) {
-		return new ProductDTO(id, "geradeira", 1499.99);
+		return new ProductDTO(id, "refrigerator", 1499.99);
 	}
 
 }
