@@ -4,9 +4,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * 
- * The JAX-RS specification uses JAXB to generate XML and JSON. 
- * The principle JAXB specification allows only produce XML. However, 
- * JAXB architecture is flexible and can easily be extended to also produce JSON.
+ * The JAX-RS specification uses JAXB to generate XML. 
  *
  */
 @XmlRootElement

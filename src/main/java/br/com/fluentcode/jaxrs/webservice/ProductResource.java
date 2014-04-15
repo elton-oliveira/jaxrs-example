@@ -26,7 +26,6 @@ public class ProductResource {
 	/**
 	 * 
 	 * Produces json.
-	 * The DTO should be annotated with JAXB @XmlRootElement.
 	 */
 	@GET
 	@Path("/{ id }/json")
