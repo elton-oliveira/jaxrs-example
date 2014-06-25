@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.fluentcode</groupId>
-	<artifactId>JAXRS-Example</artifactId>
+	<artifactId>jaxrs-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -46,6 +46,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>JAXRS-Example</finalName>
+		<finalName>jaxrs-example</finalName>
 	</build>
 </project>
