@@ -12,8 +12,8 @@ public class ProductDAO {
 		dao = new DAO<Product>(session, Product.class);
 	}
 	
-	public void insert(Product document){
-		this.dao.insert(document);
+	public void insert(Product product){
+		this.dao.insert(product);
 	}
 
 }

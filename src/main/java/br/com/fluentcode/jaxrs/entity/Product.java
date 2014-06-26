@@ -5,7 +5,14 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * 
+ * The JAX-RS specification uses JAXB to generate XML. 
+ *
+ */
+@XmlRootElement
 @Entity
 public class Product implements Serializable {
 
