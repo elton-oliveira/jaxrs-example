@@ -14,7 +14,6 @@ import javax.ws.rs.core.Response;
 import org.hibernate.Session;
 
 import br.com.fluentcode.jaxrs.dao.ProductDAO;
-import br.com.fluentcode.jaxrs.dto.ProductDTO;
 import br.com.fluentcode.jaxrs.entity.Product;
 import br.com.fluentcode.jaxrs.util.HibernateUtil;
 import br.com.fluentcode.jaxrs.util.JaxbUtil;
@@ -23,35 +22,25 @@ import br.com.fluentcode.jaxrs.util.JaxbUtil;
 public class ProductResource {
 
 	/**
-	 * TODO Remover o DTO e pegar o cara do banco
 	 * 
-	 * Produces xml. The DTO should be annotated with JAXB @XmlRootElement.
+	 * Produces XML, then Product must be annotated with JAXB @XmlRootElement
 	 */
 	@GET
-	@Path("/{ id }/xml")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-	public ProductDTO getProductAsXML(@PathParam("id") int id) {
-		return new ProductDTO(id, "refrigerator", 1499.99);
-	}
-
-	/**TODO Remover o DTO e pegar o cara do banco
-	 * 
-	 * Produces json.
-	 */
-	@GET
-	@Path("/{ id }/json")
-	@Produces(MediaType.APPLICATION_JSON)
-	public ProductDTO getProductAsJSON(@PathParam("id") int id) {
-		return new ProductDTO(id, "refrigerator", 1499.99);
+	public Product find(@PathParam("id") int id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ProductDAO dao = new ProductDAO(session);
+		return dao.findById(id);
 	}
 
 	/**
 	 * 
-	 * Request example:
+	 * Consumes XML. Request example:
 	 * 
 	 * curl -v -H "Content-Type: application/xml" -d
 	 * "<product><name>refrigerator</name><price>1499.99</price></product>"
-	 * localhost:8080/jaxrs-example/resources/product/
+	 * localhost:8080/jaxrs-example/resources/product
 	 * 
 	 */
 	@POST
@@ -68,7 +57,8 @@ public class ProductResource {
 		session.getTransaction().commit();
 		session.close();
 
-		// location
+		// return status code 201 created and the location of the product
+		// created
 		URI location = URI.create("/product/" + product.getId());
 
 		return Response.created(location).build();

@@ -15,5 +15,9 @@ public class ProductDAO {
 	public void insert(Product product){
 		this.dao.insert(product);
 	}
+	
+	public Product findById(Integer id){
+		return this.dao.findById(id);
+	}
 
 }
