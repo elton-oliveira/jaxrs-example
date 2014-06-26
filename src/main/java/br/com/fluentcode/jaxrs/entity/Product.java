@@ -25,6 +25,13 @@ public class Product implements Serializable {
 	private String name;
 
 	private Double price;
+	
+	public Product() {
+	}
+
+	public Product(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getId() {
 		return id;

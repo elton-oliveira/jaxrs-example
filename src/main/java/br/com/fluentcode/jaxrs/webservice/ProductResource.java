@@ -3,6 +3,7 @@ package br.com.fluentcode.jaxrs.webservice;
 import java.net.URI;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -63,6 +64,29 @@ public class ProductResource {
 		URI location = URI.create("/product/" + product.getId());
 
 		return Response.created(location).build();
+	}
+	
+	/**
+	 * <p>
+	 * Request example:
+	 * </p>
+	 * 
+	 * curl -v -X "DELETE" localhost:8080/jaxrs-example/resources/product/1/delete
+	 * 
+	 */
+	@DELETE
+	@Path("/{id}/delete")
+	public Response remove(@PathParam("id") Integer id){
+		// delete
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		ProductDAO dao = new ProductDAO(session);
+		session.beginTransaction();
+		dao.delete(new Product(id));
+		session.getTransaction().commit();
+		session.close();
+		
+		// return status code 200 ok
+		return Response.ok().build();
 	}
 
 }

@@ -19,5 +19,9 @@ public class ProductDAO {
 	public Product findById(Integer id){
 		return this.dao.findById(id);
 	}
+	
+	public void delete(Product product){
+		this.dao.delete(product);
+	}
 
 }
