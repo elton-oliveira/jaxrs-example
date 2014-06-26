@@ -16,19 +16,19 @@ import org.hibernate.Session;
 import br.com.fluentcode.jaxrs.dao.ProductDAO;
 import br.com.fluentcode.jaxrs.entity.Product;
 import br.com.fluentcode.jaxrs.util.HibernateUtil;
-import br.com.fluentcode.jaxrs.util.JaxbUtil;
 
 @Path("/product")
 public class ProductResource {
 
 	/**
 	 * 
-	 * Produces XML, then Product must be annotated with JAXB @XmlRootElement
+	 * Produces XML, For the JAX-RS API to the parser, the Product must be
+	 * annotated with JAXB @XmlRootElement.
 	 */
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-	public Product find(@PathParam("id") int id) {
+	public Product find(@PathParam("id") Integer id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		ProductDAO dao = new ProductDAO(session);
 		return dao.findById(id);
@@ -36,7 +36,12 @@ public class ProductResource {
 
 	/**
 	 * 
-	 * Consumes XML. Request example:
+	 * Consumes XML. For the JAX-RS API to the parser, the Product must be
+	 * annotated with JAXB @XmlRootElement.
+	 * 
+	 * <p>
+	 * Request example:
+	 * </p>
 	 * 
 	 * curl -v -H "Content-Type: application/xml" -d
 	 * "<product><name>refrigerator</name><price>1499.99</price></product>"
@@ -45,10 +50,7 @@ public class ProductResource {
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response insert(String xml) {
-		// unmarshal
-		Product product = new JaxbUtil<Product>().unmarshal(xml, Product.class);
-
+	public Response insert(Product product) {
 		// insert
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		ProductDAO dao = new ProductDAO(session);
@@ -57,8 +59,7 @@ public class ProductResource {
 		session.getTransaction().commit();
 		session.close();
 
-		// return status code 201 created and the location of the product
-		// created
+		// return status code 201 created and the product location
 		URI location = URI.create("/product/" + product.getId());
 
 		return Response.created(location).build();
