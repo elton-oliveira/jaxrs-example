@@ -34,6 +34,11 @@ public class DAO<T>{
 	public void delete(T t){
 		session.delete(t);
 	}
+
+	@SuppressWarnings("unchecked")
+	public T merge(T t) {
+		return (T) this.session.merge(t);
+	}
 	
 
 }

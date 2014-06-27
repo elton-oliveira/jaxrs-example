@@ -23,5 +23,9 @@ public class ProductDAO {
 	public void delete(Product product){
 		this.dao.delete(product);
 	}
+	
+	public void merge(Product product){
+		this.dao.merge(product);
+	}
 
 }
