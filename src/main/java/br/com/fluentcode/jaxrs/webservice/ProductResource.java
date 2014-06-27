@@ -24,7 +24,7 @@ public class ProductResource {
 
 	/**
 	 * 
-	 * Produces XML, For the JAX-RS API to the parser, the Product must be
+	 * Produces XML. For the JAX-RS API to the parser, the Product must be
 	 * annotated with JAXB @XmlRootElement.
 	 * 
 	 * <p>
