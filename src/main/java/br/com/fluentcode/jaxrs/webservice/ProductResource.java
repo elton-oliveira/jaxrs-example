@@ -31,7 +31,7 @@ public class ProductResource {
 	 * Request example:
 	 * </p>
 	 * 
-	 * curl -v localhost:8080/jaxrs-example/resources/product/1
+	 * curl -v http://localhost:8080/jaxrs-example/resources/product/1
 	 */
 	@GET
 	@Path("/{id}")
@@ -53,7 +53,7 @@ public class ProductResource {
 	 * 
 	 * curl -v -H "Content-Type: application/xml" -d
 	 * {@code"<product><name>refrigerator</name><price>1499.99</price></product>"}
-	 * localhost:8080/jaxrs-example/resources/product
+	 * http://localhost:8080/jaxrs-example/resources/product
 	 * 
 	 */
 	@POST
@@ -78,7 +78,7 @@ public class ProductResource {
 	 * Request example:
 	 * </p>
 	 * 
-	 * curl -v -X "DELETE" localhost:8080/jaxrs-example/resources/product/1
+	 * curl -v -X "DELETE" http://localhost:8080/jaxrs-example/resources/product/1
 	 * 
 	 */
 	@DELETE
@@ -107,7 +107,7 @@ public class ProductResource {
 	 * 
 	 * curl -v -X "PUT" -H "Content-Type: application/xml" -d
 	 * {@code"<product><id>1</id><name>Notebook</name><price>3699.99</price></product>"}
-	 * localhost:8080/jaxrs-example/resources/product
+	 * http://localhost:8080/jaxrs-example/resources/product
 	 * 
 	 */
 	@PUT
