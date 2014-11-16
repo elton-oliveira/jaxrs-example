@@ -67,9 +67,10 @@ public class ProductResource {
 		session.getTransaction().commit();
 		session.close();
 
-		// return status code 201 created and the product location
+		// product location
 		URI location = URI.create("/product/" + product.getId());
-
+		
+		// return status code 201 created and the product location
 		return Response.created(location).build();
 	}
 	
